@@ -1,0 +1,90 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.redis.training'
+version = '1.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Redis Java Client
+    implementation 'redis.clients:jedis:4.3.1'
+    
+    // Testing Dependencies
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.hamcrest:hamcrest-all:1.3'
+    testImplementation 'org.mockito:mockito-core:5.2.0'
+}
+
+application {
+    mainClass = 'com.redis.training.HelloWorld'
+}
+
+test {
+    useJUnit()
+    
+    // Show test results
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+    
+    // Fail fast on first test failure (optional)
+    // failFast = true
+}
+
+// Task to run specific test classes
+task stringTests(type: Test) {
+    include '**/L01_StringExerciseTest.class'
+    useJUnit()
+}
+
+task hashTests(type: Test) {
+    include '**/L02_HashExerciseTest.class'
+    useJUnit()
+}
+
+task listTests(type: Test) {
+    include '**/L03_ListExerciseTest.class'
+    useJUnit()
+}
+
+task transactionTests(type: Test) {
+    include '**/L04_TransactionExerciseTest.class'
+    useJUnit()
+}
+
+task cacheTests(type: Test) {
+    include '**/L05_CacheExerciseTest.class'
+    useJUnit()
+}
+
+task analyticsTests(type: Test) {
+    include '**/L06_AnalyticsExerciseTest.class'
+    useJUnit()
+}
+
+task queueTests(type: Test) {
+    include '**/L07_QueueExerciseTest.class'
+    useJUnit()
+}
+
+task flashSaleTests(type: Test) {
+    include '**/L08_FlashSaleExerciseTest.class'
+    useJUnit()
+}
+
+// Gradle wrapper task
+wrapper {
+    gradleVersion = '7.6'
+    distributionType = Wrapper.DistributionType.BIN
+}

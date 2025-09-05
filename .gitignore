@@ -1,0 +1,178 @@
+# Redis Training Session .gitignore
+
+# =============================================
+# Java
+# =============================================
+*.class
+*.jar
+*.war
+*.ear
+*.aar
+hs_err_pid*
+replay_pid*
+
+# =============================================
+# Gradle
+# =============================================
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Gradle Wrapper properties (keep these in version control)
+# gradle/wrapper/gradle-wrapper.properties
+
+# =============================================
+# IntelliJ IDEA
+# =============================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# =============================================
+# Eclipse
+# =============================================
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# =============================================
+# NetBeans
+# =============================================
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# =============================================
+# VS Code
+# =============================================
+.vscode/
+
+# =============================================
+# macOS
+# =============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =============================================
+# Windows
+# =============================================
+*.tmp
+*.temp
+Desktop.ini
+
+# =============================================
+# Linux
+# =============================================
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================
+# Docker
+# =============================================
+# Don't ignore docker-compose.yml files - they're part of the training
+# But ignore runtime Docker files
+.dockerignore
+
+# =============================================
+# Redis Data
+# =============================================
+# Redis data files (if any are created locally)
+*.rdb
+*.aof
+dump.rdb
+appendonly.aof
+
+# =============================================
+# Logs
+# =============================================
+*.log
+logs/
+log/
+
+# =============================================
+# Temporary files
+# =============================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# =============================================
+# Environment and Configuration
+# =============================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# =============================================
+# Maven (in case someone uses mvn wrapper)
+# =============================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# =============================================
+# Test reports and coverage
+# =============================================
+test-results/
+jacoco.exec
+*.exec
+
+# =============================================
+# Node.js (if any tooling uses it)
+# =============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =============================================
+# Training Session Specific
+# =============================================
+# Ignore any personal notes or solutions that students might create
+**/solutions/
+**/my-solutions/
+**/personal-notes/
+*.notes
+student-solutions.java
+
+# Ignore backup files that editors might create
+*.bak
+*.backup
+*.orig
+
+# =============================================
+# Git
+# =============================================
+# Don't ignore .gitignore itself
+# !.gitignore
