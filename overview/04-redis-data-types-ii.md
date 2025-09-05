@@ -137,3 +137,30 @@ HLEN user:1000            # Returns: 3
 HDEL user:1000 age        # Returns: 1 (number of fields deleted)
 HGETALL user:1000         # Returns: ["name", "John Doe", "email", "john@example.com"]
 ```
+
+## Time Complexity
+
+| Command | Time Complexity | Description | Worst Case Scenario |
+|---------|----------------|-------------|-------------------|
+|**LISTS**| | ||
+| `LPUSH` | O(1) | Add element to list head | Constant time regardless of list size |
+| `RPUSH` | O(1) | Add element to list tail | Constant time regardless of list size |
+| `LINDEX` | O(N) | Get element by index | N = distance from head/tail to index |
+| `LRANGE` | O(S+N) | Get range of elements | S = start offset, N = number of elements |
+| `LPOP` | O(1) | Remove element from head | Constant time regardless of list size |
+| `RPOP` | O(1) | Remove element from tail | Constant time regardless of list size |
+|**SETS**| | ||
+| `SADD` | O(1) | Add element to set | Constant time regardless of set size |
+| `SMEMBERS` | O(N) | Get all set members | N = number of elements in set |
+| `SISMEMBER` | O(1) | Check set membership | Constant time regardless of set size |
+| `SCARD` | O(1) | Get set cardinality | Constant time regardless of set size |
+| `SREM` | O(1) | Remove element from set | Constant time regardless of set size |
+| `SINTER` | O(N*M) | Set intersection | N = smallest set, M = number of sets |
+|**HASHES**| | ||
+| `HSET` | O(1) | Set hash field | Constant time regardless of hash size |
+| `HGET` | O(1) | Get hash field | Constant time regardless of hash size |
+| `HMSET` | O(N) | Set multiple hash fields | N = number of fields being set |
+| `HMGET` | O(N) | Get multiple hash fields | N = number of fields being retrieved |
+| `HEXISTS` | O(1) | Check if hash field exists | Constant time regardless of hash size |
+| `HLEN` | O(1) | Get number of hash fields | Constant time regardless of hash size |
+| `HGETALL` | O(N) | Get all hash fields and values | N = number of fields in hash |

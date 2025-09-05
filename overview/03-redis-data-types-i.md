@@ -106,3 +106,17 @@ TTL session:1000 # Returns: -1 (key exists but no expiration)
 TTL session:2000 # Returns: 3542 (seconds remaining)
 TTL session:3000 # Returns: -2 (key doesn't exist)
 ```
+
+## Time Complexity
+
+| Command | Time Complexity | Description | Worst Case Scenario |
+|---------|----------------|-------------|-------------------|
+| `SET` | O(1) | Set string value | Constant time regardless of value size |
+| `GET` | O(1) | Get string value | Constant time regardless of value size |
+| `MSET` | O(N) | Set multiple keys | N = number of keys being set |
+| `MGET` | O(N) | Get multiple keys | N = number of keys being retrieved |
+| `INCR` | O(1) | Increment integer value | Constant time regardless of value size |
+| `DECR` | O(1) | Decrement integer value | Constant time regardless of value size |
+| `GETRANGE` | O(N) | Get substring of string | N = length of substring returned |
+| `STRLEN` | O(1) | Get string length | Constant time regardless of string size |
+| `APPEND` | O(1) | Append value to string | Amortized O(1), may require reallocation |
