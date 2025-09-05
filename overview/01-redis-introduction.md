@@ -9,7 +9,8 @@
 
 - Each key is mapped to a slot using the following formula: `CRC16(key) % 16384`
 - There are a total of 16384 slots (0-16383)
-- Atomic operations possible (within a slot)
+- Atomic operations possible
+- Transactions are possible within a slot
 - Single thread event loop for command execution
 - Optional persistence with Redis Database (RDB) snapshots or Append Only File (AOF), or combination of both
 - Cluster mode for horizontal scaling
