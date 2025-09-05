@@ -1,6 +1,7 @@
 package com.redis.training;
 
 import com.redis.base.LabBase;
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 /**

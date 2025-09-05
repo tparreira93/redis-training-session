@@ -13,8 +13,6 @@ import static org.hamcrest.Matchers.*;
  * Tests for TransactionExercise.
  * Run these tests to validate your Redis transaction implementations.
  * <p>
- * To run all tests: mvn test
- * To run this test class: mvn test -Dtest=TransactionExerciseTest
  */
 public class L04_TransactionExerciseTest extends TestBase {
     private L04_TransactionExercise l04TransactionExercise;

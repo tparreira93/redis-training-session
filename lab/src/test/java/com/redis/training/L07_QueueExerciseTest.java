@@ -54,8 +54,8 @@ public class L07_QueueExerciseTest extends TestBase {
         String[] processed = l07QueueExercise.processNotificationQueue(prefixKey, type, 2);
 
         assertThat("Should process 2 messages", processed.length, is(2));
-        assertThat("Should process in FIFO order", processed[0], is(prefixKey + "sms:1234567890:Message 1"));
-        assertThat("Should process in FIFO order", processed[1], is(prefixKey + "sms:0987654321:Message 2"));
+        assertThat("Should process in FIFO order", processed[0], is("sms:1234567890:Message 1"));
+        assertThat("Should process in FIFO order", processed[1], is("sms:0987654321:Message 2"));
 
         // Verify one message remains
         try (Jedis jedis = jedisPool.getResource()) {

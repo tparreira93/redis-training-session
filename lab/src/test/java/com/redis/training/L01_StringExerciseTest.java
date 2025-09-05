@@ -10,9 +10,6 @@ import static org.hamcrest.Matchers.*;
 /**
  * Tests for StringExercise.
  * Run these tests to validate your Redis string implementations.
- *
- * To run all tests: mvn test
- * To run this test class: mvn test -Dtest=StringExerciseTest
  */
 public class L01_StringExerciseTest extends TestBase {
     private L01_StringExercise l01StringExercise;

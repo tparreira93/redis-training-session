@@ -9,13 +9,13 @@ import java.util.List;
 
 /**
  * Exercise 7: Redis Queue Operations
- *
+ * <p>
  * In this exercise, you'll implement a notification service using Redis lists as queues.
  * You'll learn to build producer-consumer patterns for email and SMS notifications,
  * which are common in real-world applications for background job processing.
- *
+ * <p>
  * Time: 20 minutes
- *
+ * <p>
  * Learning Objectives:
  * - Implement producer-consumer pattern with Redis lists
  * - Use blocking operations for efficient queue processing
@@ -34,14 +34,14 @@ public class L07_QueueExercise extends LabBase {
 
     /**
      * Exercise 7.1: Enqueue Notification
-     *
+     * <p>
      * Adds a notification to the appropriate queue based on type.
      * This simulates a notification service that handles different types of messages.
      *
      * @param prefixKey Prefix for queue keys
-     * @param type Notification type ("email" or "sms")
+     * @param type      Notification type ("email" or "sms")
      * @param recipient Recipient identifier
-     * @param message Message content
+     * @param message   Message content
      * @return Queue length after adding the notification
      */
     public Long enqueueNotification(String prefixKey, String type, String recipient, String message) {
@@ -56,12 +56,12 @@ public class L07_QueueExercise extends LabBase {
 
     /**
      * Exercise 7.2: Process Notification Queue
-     *
+     * <p>
      * Processes notifications from a queue in FIFO order.
      * This simulates a worker that processes notifications from the queue.
      *
-     * @param prefixKey Prefix for queue keys
-     * @param type Queue type to process ("email" or "sms")
+     * @param prefixKey   Prefix for queue keys
+     * @param type        Queue type to process ("email" or "sms")
      * @param maxMessages Maximum number of messages to process
      * @return Array of processed notification messages
      */
@@ -78,7 +78,7 @@ public class L07_QueueExercise extends LabBase {
 
     /**
      * Exercise 7.3: Priority Queue Processing
-     *
+     * <p>
      * Processes notifications with priority - high priority queue first, then normal.
      * This demonstrates how to implement priority queues using multiple Redis lists.
      *

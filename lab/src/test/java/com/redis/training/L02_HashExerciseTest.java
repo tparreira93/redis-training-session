@@ -13,8 +13,6 @@ import static org.hamcrest.Matchers.*;
 /**
  * Tests for HashExercise.
  * Run these tests to validate your Redis hash implementations.
- *
- * To run this test class: mvn test -Dtest=HashExerciseTest
  */
 public class L02_HashExerciseTest extends TestBase {
     private L02_HashExercise l02HashExercise;

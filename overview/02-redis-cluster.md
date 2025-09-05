@@ -103,7 +103,6 @@ From analyzing the output we can see that:
   - redis-7005 (`87607704bf12101439c1b004c1c2e838861f046f`) - slave of redis-7001
   - redis-7006 (`5972aa60dc67f1f311ab7bea2e7c61b236e4cad5`) - slave of redis-7002
 
-
 ```text
 16,384 slots ────────────────┐
                              │
@@ -122,7 +121,6 @@ From analyzing the output we can see that:
            │  Slave 7004            │
            └────────────────────────┘
 ```
-
 
 ### Node failure
 

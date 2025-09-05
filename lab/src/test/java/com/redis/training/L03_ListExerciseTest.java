@@ -12,8 +12,6 @@ import static org.hamcrest.Matchers.*;
 /**
  * Tests for ListExercise.
  * Run these tests to validate your Redis list implementations.
- *
- * To run this test class: mvn test -Dtest=ListExerciseTest
  */
 public class L03_ListExerciseTest extends TestBase {
     private L03_ListExercise l03ListExercise;

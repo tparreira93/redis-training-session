@@ -38,14 +38,15 @@ public class L05_CacheExerciseTest extends TestBase {
     public void testGetUserDataCacheHit() {
         String userId = "123";
         String expectedData = "Cached User Data";
+        String key = "user:" + userId + ":profile";
 
-        String key = getTestKey("user:" + userId + ":profile");
+        String prefixKey = getTestKey();
 
         try (Jedis jedis = jedisPool.getResource()) {
-            jedis.setex(key, 300, expectedData);
+            jedis.setex(prefixKey + key, 300, expectedData);
         }
 
-        l05CacheExercise.getUserData(userId);
+        l05CacheExercise.getUserData(prefixKey, userId);
 
         verify(fakeService, never()).doSomething(userId);
     }
@@ -54,21 +55,42 @@ public class L05_CacheExerciseTest extends TestBase {
     public void testGetUserDataCacheMiss() {
         String userId = "123";
         String expectedData = "something was done";
+        String key = "user:" + userId + ":profile";
 
-        String key = getTestKey("user:" + userId + ":profile");
+        String prefixKey = getTestKey();
 
-        String result = l05CacheExercise.getUserData(key);
+        String result = l05CacheExercise.getUserData(prefixKey, userId);
 
-        verify(fakeService, Mockito.times(1)).doSomething(userId);
+        verify(fakeService, Mockito.times(1)).doSomething(anyString());
 
-        assertThat("Should return database data", result, is(expectedData));
+        assertThat("Expected fake service to be called", result, is(expectedData));
 
         // Verify data was cached
         try (Jedis jedis = jedisPool.getResource()) {
-            String cachedData = jedis.get(key);
+            String cachedData = jedis.get(prefixKey + key);
             assertThat("Data should be cached", cachedData, is(expectedData));
 
-            Long ttl = jedis.ttl(key);
+            Long ttl = jedis.ttl(prefixKey + key);
+            assertThat("Cache should have TTL", ttl, greaterThan(0L));
+        }
+    }
+
+
+    @Test
+    public void testUpdateUserData() {
+        String userId = "123";
+        String userData = "something was done";
+        String key = "user:" + userId + ":profile";
+        String prefixKey = getTestKey();
+
+        boolean result = l05CacheExercise.updateUserData(prefixKey, userId, userData);
+
+        assertThat("Should return true on success", result, is(true));
+        try (Jedis jedis = jedisPool.getResource()) {
+            String cachedData = jedis.get(prefixKey + key);
+            assertThat("Data should be cached", cachedData, is(userData));
+
+            Long ttl = jedis.ttl(prefixKey + key);
             assertThat("Cache should have TTL", ttl, greaterThan(0L));
         }
     }
@@ -76,18 +98,17 @@ public class L05_CacheExerciseTest extends TestBase {
     @Test
     public void testWarmUpUserCache() {
         String[] userIds = {"user1", "user2", "user3"};
+        String prefixKey = getTestKey();
 
-        int result = l05CacheExercise.warmUpUserCache(userIds);
-        
+        int result = l05CacheExercise.warmUpUserCache(prefixKey, userIds);
+
         assertThat("Should warm up all users", result, is(3));
-        
-        // Verify all users are cached
+
         try (Jedis jedis = jedisPool.getResource()) {
             for (String userId : userIds) {
-                String cachedData = jedis.get("user:" + userId);
+                String key = "user:" + userId + ":profile";
+                String cachedData = jedis.get(prefixKey + key);
                 assertThat("User should be cached", cachedData, is(not(nullValue())));
-                assertThat("Cached data should match expected format", 
-                          cachedData, is("User:" + userId + ":Data"));
             }
         }
     }

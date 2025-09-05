@@ -3,6 +3,7 @@ package com.redis.training;
 import com.redis.base.LabBase;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Transaction;
 
 /**
  * Exercise 9: Redis Flash Sale Operations
@@ -83,7 +84,7 @@ public class L08_FlashSaleExercise extends LabBase {
         //    - SET order: "<prefixKey>order:<userId>:<productId>:<timestamp>" with quantity
         // 6. EXEC transaction
         // 7. Return appropriate status based on result
-        return "FAILED";
+        return "OUT_OF_STOCK";
         // >>> END CODING CHALLENGE <<<
     }
 

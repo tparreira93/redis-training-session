@@ -1,0 +1,16 @@
+// Configure Gradle to look for plugins in the official plugin portal
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+// Configure dependency resolution repositories
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'redis-training-lab'
